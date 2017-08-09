@@ -8,7 +8,10 @@ const config = {
   },
   output: {
     path: __dirname,
-    filename: '[name].min.js'
+    filename: '[name].min.js',
+    library: 'onePageScroll',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   stats: {
     colors: true,
