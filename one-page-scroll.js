@@ -1,6 +1,6 @@
 /*
- * one-page-scroll 0.1.0
- * http://huihuimoe.github.io/one-page-scroll
+ * one-page-scroll 0.1.1
+ * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
  * Released under the MIT license
@@ -39,10 +39,11 @@ class onePageScroll {
     /*
      * Event register
      */
-    window.onpopstate = () => {
+    window.onpopstate = (e) => {
       const hashIndex = this._findHash()
       if (hashIndex) {
         this.goto(hashIndex)
+        e.preventDefault()
       }
     }
     this._touchStartY = 0;

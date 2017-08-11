@@ -65,7 +65,7 @@ const config = {
     new webpack.BannerPlugin({banner:
 `/*!
  * one-page-scroll
- * http://huihuimoe.github.io/one-page-scroll
+ * https://github.com/huihuimoe/one-page-scroll
  * Released under the MIT license
  */`,
       raw: true,
