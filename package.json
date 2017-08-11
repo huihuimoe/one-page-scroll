@@ -1,11 +1,12 @@
 {
   "name": "one-page-scroll",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A One Page Scroll system.",
-  "main": "one-page-scroll.js",
+  "main": "one-page-scroll.min.js",
+  "style": "one-page-scroll.min.css",
   "scripts": {
     "test": "standard",
-    "build": "webpack"
+    "build": "webpack --progress"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
   "homepage": "https://github.com/huihuimoe/one-page-scroll#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.2",
-    "babel": "^6.23.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",

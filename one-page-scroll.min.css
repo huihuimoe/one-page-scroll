@@ -1,1 +1,7 @@
-body{margin:0;padding:0}
+/*!
+ * one-page-scroll
+ * http://huihuimoe.github.io/one-page-scroll
+ * Released under the MIT license
+ */
+.op-page,body,html{width:100%;height:100%;overflow:hidden}body,html{margin:0}.op-page{-ms-touch-action:none;touch-action:none;position:relative}
+/*# sourceMappingURL=one-page-scroll.min.css.map*/

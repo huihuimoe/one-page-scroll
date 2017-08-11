@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = {
   context: __dirname,
+  devtool: 'source-map',
   entry: {
     'one-page-scroll': './one-page-scroll.js'
   },
@@ -44,8 +45,8 @@ const config = {
               loader: 'css-loader',
               options: {
                 importLoaders: 1,
-                minimize: true,
-                sourceMap: true
+                sourceMap: true,
+                minimize: true
               }
             },
             'postcss-loader'
@@ -54,16 +55,21 @@ const config = {
       }
     ]},
   plugins: [
-    new webpack.DefinePlugin({
-      VERSION: `"${require('./package.json').version}"`
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
       sourceMap: true
     }),
-    new ExtractTextPlugin('[name].min.css')
+    new ExtractTextPlugin('[name].min.css'),
+    new webpack.BannerPlugin({banner:
+`/*!
+ * one-page-scroll
+ * http://huihuimoe.github.io/one-page-scroll
+ * Released under the MIT license
+ */`,
+      raw: true,
+      entryOnly: true})
   ]
 }
 

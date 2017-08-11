@@ -1,13 +1,14 @@
 # one-page-scroll
 
 ## Intro
-This project is in developing.
+@TODO README and Doc.
+You can see the [demo](http://huihuimoe.github.io/one-page-scroll/demo/) for more details.
 
 ## Build
 ```bash
 $ npm install
-$ npm build
+$ npm run build
 ```
 
 ## Author
-**[huihuimoe](https://github.com/huihuimoe)** ©, under the [MIT](./LICENSE) License.
+**[huihuimoe](https://github.com/huihuimoe)** ©, Released under the [MIT](./LICENSE) License.

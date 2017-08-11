@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="../one-page-scroll.min.css">
+  <style>
+    #s1 {
+      background: white;
+    }
+
+    #s2 {
+      background: red;
+    }
+
+    #s3 {
+      background: yellow;
+    }
+
+    #s4 {
+      background: blue;
+    }
+
+    nav {
+      position: fixed;
+      right: 2rem;
+      bottom: 2rem;
+      background: gray;
+      padding: .5rem;
+    }
+
+    #change {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+    <section id="s1" title="page1">
+
+    </section>
+    <section id="s2" title="page2">
+
+    </section>
+    <section id="s3">
+
+    </section>
+    <section id="s4" title="page4">
+
+    </section>
+  <nav>
+    <form>
+      <label for="time">time&nbsp&nbsp</label>
+      <input type="text" id="time" value="600">
+      ms<br>
+      <label for="easing">easing</label>
+      <input type="text" id="easing" value="ease-out">
+      <br>
+      <label>loop&nbsp&nbsp</label>
+      <select name="loop">
+        <option value="false">false</option>
+        <option value="true">true</option>
+      </select>
+      <input type="submit" value="change">
+    </form>
+  </nav>
+  <script src="../one-page-scroll.min.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+      var el = document.querySelectorAll('section')
+      var app = new onePageScroll({
+        el: el
+      });
+      el.forEach(function(el) {
+        ['inview','outview'].forEach(function(key) {
+          el.addEventListener(key, function() {
+            console.log((el.getAttribute('title') || 'notitle') + ' is ' + key)
+          })
+        })
+      });
+      window['app'] = app;
+
+      window.addEventListener('submit', function(e) {
+        form = e.target;
+        app.time = form.time.value;
+        app.easing = form.easing.value;
+        app.loop = form.loop.value === 'true' ? true : false;
+        e.preventDefault();
+      })
+    });
+  </script>
+</body>
+
+</html>
