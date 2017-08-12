@@ -1,5 +1,5 @@
 /*
- * one-page-scroll 0.1.3
+ * one-page-scroll 0.1.4
  * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
@@ -43,7 +43,7 @@ class onePageScroll {
     /*
      * Url Hash Initialization
      */
-    const findHash = () => this._hash.findIndex((hash, i) => {
+    const findHash = () => window.location.hash === '' ? 1 : this._hash.findIndex((hash, i) => {
       if (['#' + hash, '#' + (i + 1)].includes(window.location.hash)) {
         return true
       }
@@ -56,7 +56,7 @@ class onePageScroll {
     window.onpopstate = (e) => {
       const hashIndex = findHash()
       if (hashIndex) {
-        this.goto(hashIndex)
+        this.goto(hashIndex, true)
       }
     }
     ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].forEach(
@@ -83,7 +83,7 @@ class onePageScroll {
       this._el[this.active - 1].dispatchEvent(new window.CustomEvent('outview'))
       this._el[n - 1].dispatchEvent(new window.CustomEvent('inview'))
       this.active = n
-      window.history.pushState({}, '', '#' + this._hash[n - 1])
+      !arguments[1] && window.history.pushState({}, '', '#' + this._hash[n - 1])
     }
     return this
   }
