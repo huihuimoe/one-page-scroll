@@ -1,5 +1,5 @@
 /*
- * one-page-scroll 0.1.2
+ * one-page-scroll 0.1.3
  * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
@@ -13,29 +13,27 @@ class onePageScroll {
   /**
    * constructor function
    *
-   * @param {Object} option - see README.md
+   * @param {Object} options - see README.md
    * @constructor
    */
   constructor ({
-    el = [],
+    el,
     time = 600,
     easing = 'ease-out',
     loop = false
   } = {}) {
+    if (!el || !el.length) {
+      throw new TypeError('el is undefined')
+    }
+
     /*
      * Variable Initialization
      */
-    [
-      this.loop,
-      this.time,
-      this.easing,
-      this.pageTotal
-    ] = [
-      loop,
-      time,
-      easing,
-      el.length
-    ]
+    this.loop = loop
+    this.time = time
+    this.easing = easing
+    this.pageTotal = el.length
+    this.active = 1
     this._el = Array.from(el, el => {
       el.classList.add('op-page')
       return el
@@ -50,9 +48,7 @@ class onePageScroll {
         return true
       }
     }) + 1
-
-    this.active = findHash() || 1
-    this.goto(this.active)
+    this.goto(findHash())
 
     /*
      * Event register
@@ -78,15 +74,17 @@ class onePageScroll {
     if (n > this.pageTotal || n < 1) {
       this.loop ? n = 1 : n = this.active
     }
-    this._el.forEach(el => {
-      const style = el.style
-      style.transition = `transform ${this.time}ms ${this.easing}`
-      style.transform = `translateY(${-(n - 1) * 100}%)`
-    })
-    this._el[this.active - 1].dispatchEvent(new window.CustomEvent('outview'))
-    this._el[n - 1].dispatchEvent(new window.CustomEvent('inview'))
-    this.active = n
-    window.history.pushState({}, '', '#' + this._hash[n - 1])
+    if (n !== this.active) {
+      this._el.forEach(el => {
+        const style = el.style
+        style.transition = `transform ${this.time}ms ${this.easing}`
+        style.transform = `translateY(${-(n - 1) * 100}%)`
+      })
+      this._el[this.active - 1].dispatchEvent(new window.CustomEvent('outview'))
+      this._el[n - 1].dispatchEvent(new window.CustomEvent('inview'))
+      this.active = n
+      window.history.pushState({}, '', '#' + this._hash[n - 1])
+    }
     return this
   }
 
