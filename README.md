@@ -27,9 +27,9 @@ Then call it by `new onePageScroll({options})` and put the elements in options.
 ```javascript
 window.addEventListener('load', function() {
   var app = new onePageScroll({
-    el: document.querySelectorA('section')
+    el: document.querySelectorA('section');
   });
-})
+});
 ```
 That's all.
 
