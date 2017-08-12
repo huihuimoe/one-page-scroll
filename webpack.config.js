@@ -64,7 +64,7 @@ const config = {
     new ExtractTextPlugin('[name].min.css'),
     new webpack.BannerPlugin({banner:
 `/*!
- * one-page-scroll
+ * one-page-scroll ${require('./package.json').version}
  * https://github.com/huihuimoe/one-page-scroll
  * Released under the MIT license
  */`,

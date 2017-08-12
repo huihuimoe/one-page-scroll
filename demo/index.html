@@ -28,7 +28,7 @@
       padding: .5rem;
     }
 
-    #change {
+    input[type="submit"] {
       display: block;
       margin: 0 auto;
     }
@@ -36,16 +36,16 @@
 </head>
 
 <body>
-    <section id="s1" title="page1">
+    <section id="s1" name="page1">
 
     </section>
-    <section id="s2" title="page2">
+    <section id="s2" name="page2">
 
     </section>
     <section id="s3">
 
     </section>
-    <section id="s4" title="page4">
+    <section id="s4" name="page4">
 
     </section>
   <nav>
@@ -64,27 +64,35 @@
       <input type="submit" value="change">
     </form>
   </nav>
+  <script>
+    if (document["documentMode"]){
+      var s = document.createElement('script');
+      s.setAttribute('src', '../one-page-scroll.polyfill.js');
+      document.body.appendChild(s);
+    }
+  </script>
   <script src="../one-page-scroll.min.js"></script>
   <script>
-    window.addEventListener('load', function() {
-      var el = document.querySelectorAll('section')
+   window.addEventListener('load', function() {
+      var el = document.querySelectorAll('section');
       var app = new onePageScroll({
         el: el
       });
-      el.forEach(function(el) {
+      Array.from(el).forEach(function(el) {
         ['inview','outview'].forEach(function(key) {
           el.addEventListener(key, function() {
-            console.log((el.getAttribute('title') || 'notitle') + ' is ' + key)
+            console.log((el.getAttribute('name') || 'noname') + ' is ' + key);
           })
         })
       });
-      window['app'] = app;
 
-      window.addEventListener('submit', function(e) {
+      window.app = app;
+
+      document.addEventListener('submit', function(e) {
         form = e.target;
         app.time = form.time.value;
         app.easing = form.easing.value;
-        app.loop = form.loop.value === 'true' ? true : false;
+        app.loop = form.loop.value === 'true';
         e.preventDefault();
       })
     });
