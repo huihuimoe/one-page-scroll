@@ -64,13 +64,7 @@
       <input type="submit" value="change">
     </form>
   </nav>
-  <script>
-    if (document["documentMode"]){
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://unpkg.com/one-page-scroll/one-page-scroll.polyfill.js');
-      document.body.appendChild(s);
-    }
-  </script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
   <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
   <script>
    window.addEventListener('load', function() {
