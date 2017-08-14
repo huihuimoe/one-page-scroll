@@ -19,6 +19,10 @@ Just link css file to your head and add the script file before end of body.
 </head>
 
 <body>
+    <section name="page1"></section>
+    <section name="page2"></section>
+    <section></section>
+    <section name="page4"></section>
 ...
   <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
 </body>
@@ -59,13 +63,9 @@ You can change the last 3 options any times. like `app.easing = 'cubic-bezier(0.
 ## Browser Support
 one-page-scroll support the lastest Chrome, Firefox, Edge and Safari.
 
-Use polyfill to add support for IE>9.
-```javascript
-if (document["documentMode"]){
-  var s = document.createElement('script');
-  s.setAttribute('src', 'https://unpkg.com/one-page-scroll/one-page-scroll.polyfill.js');
-  document.body.appendChild(s);
-}
+Use polyfill to add support for IE > 9.
+```html
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
 ```
 
 ## Build
