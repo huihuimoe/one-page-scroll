@@ -14,16 +14,16 @@ It has full support the mouse, keyboard and touch event.
 Just link css file to your head and add the script file before end of body.
 ```html
 <head>
-...
+  ...
   <link rel="stylesheet" href="https://unpkg.com/one-page-scroll/one-page-scroll.min.css">
 </head>
 
 <body>
-    <section name="page1"></section>
-    <section name="page2"></section>
-    <section></section>
-    <section name="page4"></section>
-...
+  <section name="page1"></section>
+  <section name="page2"></section>
+  <section></section>
+  <section name="page4"></section>
+  ...
   <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
 </body>
 ```
@@ -63,7 +63,7 @@ You can change the last 3 options any times. like `app.easing = 'cubic-bezier(0.
 ## Browser Support
 one-page-scroll support the lastest Chrome, Firefox, Edge and Safari.
 
-Use polyfill to add support for IE > 9.
+Use polyfill to support IE > 9.
 ```html
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
 ```
