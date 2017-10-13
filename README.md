@@ -29,9 +29,9 @@ Just link css file to your head and add the script file before end of body.
 ```
 Then call it by `new onePageScroll({options})` and put the elements in options.
 ```javascript
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var app = new onePageScroll({
-    el: document.querySelectorA('section');
+    el: document.querySelectorAll('section');
   });
 });
 ```
