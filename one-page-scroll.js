@@ -1,5 +1,5 @@
 /*
- * one-page-scroll 0.1.4
+ * one-page-scroll 0.1.5
  * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
@@ -83,7 +83,7 @@ class onePageScroll {
       this._el[this.active - 1].dispatchEvent(new window.CustomEvent('outview'))
       this._el[n - 1].dispatchEvent(new window.CustomEvent('inview'))
       this.active = n
-      !arguments[1] && window.history.pushState({}, '', '#' + this._hash[n - 1])
+      !arguments[1] && window.history.replaceState({}, '', '#' + this._hash[n - 1])
     }
     return this
   }

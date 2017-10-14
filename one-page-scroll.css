@@ -4,10 +4,6 @@ html, body, .op-page {
   overflow: hidden;
 }
 
-html, body {
-  margin: 0;
-}
-
 .op-page {
   touch-action: none;
   position: relative;
