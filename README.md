@@ -27,13 +27,13 @@ Just link css file to your head and add the script file before end of body.
   <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
 </body>
 ```
-Then call it by `new onePageScroll({options})` and put the elements in options.
+Then call it `new onePageScroll({options})` .
 ```javascript
 document.addEventListener('DOMContentLoaded', function() {
   var app = new onePageScroll({
     el: document.querySelectorAll('section');
-  });
-});
+  })
+})
 ```
 That's all.
 
@@ -43,9 +43,9 @@ While page changed, the element will be dispatched a event `inview` or `outview`
 
 So you can do any thing when users or you change the page like this.
 ```javascript
-el.addEventListener('inview', functione(e) {
+el.addEventListener('inview', function(e) {
   // do something
-});
+})
 ```
 
 ## Options
@@ -58,12 +58,12 @@ one-page-scroll has 4 options.
   loop // Boolean - loop pages(only the last page to the first page), default: false
 }
 ```
-You can change the last 3 options any times. like `app.easing = 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'`
+You can change the last 3 options any times. just `app.easing = 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'`
 
 ## Browser Support
 one-page-scroll support the lastest Chrome, Firefox, Edge and Safari.
 
-Use polyfill to support IE > 9.
+Add polyfill before one-page-scroll to support IE > 9.
 ```html
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
 ```

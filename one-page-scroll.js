@@ -1,5 +1,5 @@
 /*
- * one-page-scroll 0.1.5
+ * one-page-scroll 0.1.6
  * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
@@ -53,12 +53,12 @@ class onePageScroll {
     /*
      * Event register
      */
-    window.onpopstate = (e) => {
+    window.addEventListener('popstate', e => {
       const hashIndex = findHash()
       if (hashIndex) {
         this.goto(hashIndex, true)
       }
-    }
+    });
     ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].forEach(
       e => document.addEventListener(e, this)
     )

@@ -4,6 +4,9 @@
 <head>
   <link rel="stylesheet" href="../one-page-scroll.min.css">
   <style>
+    body {
+      margin: 0;
+    }
     #s1 {
       background: white;
     }
@@ -75,9 +78,9 @@
       Array.from(el).forEach(function(el) {
         ['inview','outview'].forEach(function(key) {
           el.addEventListener(key, function() {
-            console.log((el.getAttribute('name') || 'noname') + ' is ' + key);
-          })
-        })
+            console.log((el.getAttribute('name') || 'null') + ' is ' + key);
+          });
+        });
       });
 
       window.app = app;
