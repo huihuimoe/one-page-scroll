@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="../one-page-scroll.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/one-page-scroll/one-page-scroll.min.css">
   <style>
     body {
       margin: 0;
@@ -68,7 +68,7 @@
     </form>
   </nav>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
-  <script src="../one-page-scroll.min.js"></script>
+  <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
   <script>
    window.addEventListener('load', function() {
       var el = document.querySelectorAll('section');
@@ -78,9 +78,9 @@
       Array.from(el).forEach(function(el) {
         ['inview','outview'].forEach(function(key) {
           el.addEventListener(key, function() {
-            console.log((el.getAttribute('name') || 'null') + ' is ' + key);
-          });
-        });
+            console.log((el.getAttribute('name') || 'noname') + ' is ' + key);
+          })
+        })
       });
 
       window.app = app;
