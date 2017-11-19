@@ -1,5 +1,5 @@
 /*
- * one-page-scroll 0.1.7
+ * one-page-scroll 0.1.8
  * https://github.com/huihuimoe/one-page-scroll
  *
  * Copyright 2017 huihuimoe
@@ -35,7 +35,7 @@ class onePageScroll {
     this.pageTotal = el.length
     this.active = 1
     this._el = Array.prototype.slice.call(el)
-    this._el.forEach(e => el.classList.add(style.opPage))
+    this._el.forEach(e => el.classList.add(style['op-page']))
     this._hash = this._el.map((el, i) => el.getAttribute('name') || i + 1)
 
     /*

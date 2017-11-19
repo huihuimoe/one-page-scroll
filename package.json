@@ -1,6 +1,6 @@
 {
   "name": "one-page-scroll",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A One Page Scroll system.",
   "main": "one-page-scroll.min.js",
   "style": "one-page-scroll.min.css",
