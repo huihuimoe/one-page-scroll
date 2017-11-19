@@ -65,7 +65,7 @@ one-page-scroll support the lastest Chrome, Firefox, Edge and Safari.
 
 Add polyfill before one-page-scroll to support IE > 9.
 ```html
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
 ```
 
 ## Build

@@ -46,7 +46,9 @@ const config = {
               options: {
                 importLoaders: 1,
                 sourceMap: true,
-                minimize: true
+                minimize: true,
+                module: true,
+                localIdentName: '[emoji:4]'
               }
             },
             'postcss-loader'
