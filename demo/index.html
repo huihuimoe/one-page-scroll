@@ -67,7 +67,7 @@
       <input type="submit" value="change">
     </form>
   </nav>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.from,Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
   <script src="https://unpkg.com/one-page-scroll/one-page-scroll.min.js"></script>
   <script>
    window.addEventListener('load', function() {
@@ -75,7 +75,7 @@
       var app = new onePageScroll({
         el: el
       });
-      Array.from(el).forEach(function(el) {
+      Array.prototype.slice.call(el).forEach(function(el) {
         ['inview','outview'].forEach(function(key) {
           el.addEventListener(key, function() {
             console.log((el.getAttribute('name') || 'noname') + ' is ' + key);
