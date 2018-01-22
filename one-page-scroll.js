@@ -1,12 +1,3 @@
-/*
- * one-page-scroll 0.1.9
- * https://github.com/huihuimoe/one-page-scroll
- *
- * Copyright 2017 huihuimoe
- * Released under the MIT license
- * https://github.com/huihuimoe/one-page-scroll/blob/master/LICENSE
- */
-
 /* global CSSCLASS Blob URL CustomEvent location history */
 
 class onePageScroll {
