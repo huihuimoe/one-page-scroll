@@ -11,13 +11,8 @@ It has full support the mouse, keyboard and touch event.
 [**Demo**](http://huihuimoe.github.io/one-page-scroll/demo/)
 
 ## Usage
-Just link css file to your head and add the script file before end of body.
+Just add the script file before end of body.
 ```html
-<head>
-  ...
-  <link rel="stylesheet" href="https://unpkg.com/one-page-scroll/one-page-scroll.min.css">
-</head>
-
 <body>
   <section name="page1"></section>
   <section name="page2"></section>

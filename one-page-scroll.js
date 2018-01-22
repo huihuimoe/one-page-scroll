@@ -7,7 +7,7 @@
  * https://github.com/huihuimoe/one-page-scroll/blob/master/LICENSE
  */
 
-import style from './one-page-scroll.css'
+/* global CSSCLASS Blob URL CustomEvent location history */
 
 class onePageScroll {
   /**
@@ -34,15 +34,35 @@ class onePageScroll {
     this.easing = easing
     this.pageTotal = el.length
     this.active = 1
+    const style = `
+      body{
+        overflow: hidden
+      }
+      .${CSSCLASS}{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        touch-action: none;
+        position: absolute
+      }
+    `
+    const css = new Blob([style], {type: 'text/css'})
+    const link = document.createElement('link')
+    link.setAttribute('rel', 'stylesheet')
+    link.setAttribute('href', URL.createObjectURL(css))
+    document.head.appendChild(link)
     this._el = Array.prototype.slice.call(el)
-    this._el.forEach(el => el.classList.add(style['op-page']))
+    this._el.forEach((el, index) => {
+      el.classList.add(CSSCLASS)
+      el.style.transform = `translateY(${index * 100}%)`
+    })
     this._hash = this._el.map((el, i) => el.getAttribute('name') || i + 1)
 
     /*
      * Url Hash Initialization
      */
-    const findHash = () => window.location.hash === '' ? 1 : this._hash.findIndex((hash, i) => {
-      if (['#' + hash, '#' + (i + 1)].includes(window.location.hash)) {
+    const findHash = () => location.hash === '' ? 1 : this._hash.findIndex((hash, i) => {
+      if (['#' + hash, '#' + (i + 1)].includes(location.hash)) {
         return true
       }
     }) + 1
@@ -73,15 +93,15 @@ class onePageScroll {
       this.loop ? n = 1 : n = this.active
     }
     if (n !== this.active) {
-      this._el.forEach(el => {
+      this._el.forEach((el, index) => {
         const style = el.style
         style.transition = `transform ${this.time}ms ${this.easing}`
-        style.transform = `translateY(${-(n - 1) * 100}%)`
+        style.transform = `translateY(${(index - n + 1) * 100}%)`
       })
-      this._el[this.active - 1].dispatchEvent(new window.CustomEvent('outview'))
-      this._el[n - 1].dispatchEvent(new window.CustomEvent('inview'))
+      this._el[this.active - 1].dispatchEvent(new CustomEvent('outview'))
+      this._el[n - 1].dispatchEvent(new CustomEvent('inview'))
       this.active = n
-      !arguments[1] && window.history.replaceState({}, '', '#' + this._hash[n - 1])
+      !arguments[1] && history.replaceState({}, '', '#' + this._hash[n - 1])
     }
     return this
   }

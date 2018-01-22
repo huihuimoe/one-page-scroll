@@ -1,6 +1,6 @@
 'use strict'
+const randomEmoji = require('random-unicode-emoji')
 const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = {
   context: __dirname,
   devtool: 'source-map',
@@ -29,31 +29,15 @@ const config = {
       },
       {
         test: /\.js$/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            presets: ['env']
-          }
-        }]
-      }, {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1,
-                sourceMap: true,
-                minimize: true,
-                module: true,
-                localIdentName: '[emoji:4]'
-              }
-            },
-            'postcss-loader'
-          ]
-        })
+        use: [
+          'template-string-optimize-loader',
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              presets: ['env']
+            }
+          }]
       }
     ]},
   plugins: [
@@ -63,7 +47,6 @@ const config = {
       },
       sourceMap: true
     }),
-    new ExtractTextPlugin('[name].min.css'),
     new webpack.BannerPlugin({banner:
 `/*!
  * one-page-scroll ${require('./package.json').version}
@@ -71,7 +54,10 @@ const config = {
  * Released under the MIT license
  */`,
       raw: true,
-      entryOnly: true})
+      entryOnly: true}),
+    new webpack.DefinePlugin({
+      CSSCLASS: "'" + randomEmoji.random({count: 4}).join('') + "'"
+    })
   ]
 }
 

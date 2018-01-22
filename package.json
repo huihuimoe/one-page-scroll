@@ -1,9 +1,8 @@
 {
   "name": "one-page-scroll",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A One Page Scroll system.",
   "main": "one-page-scroll.min.js",
-  "style": "one-page-scroll.min.css",
   "scripts": {
     "test": "standard",
     "build": "webpack --progress"
@@ -22,18 +21,13 @@
   },
   "homepage": "https://github.com/huihuimoe/one-page-scroll#readme",
   "devDependencies": {
-    "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "postcss": "^6.0.14",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-loader": "^2.0.8",
+    "random-unicode-emoji": "^1.0.1",
     "standard": "^10.0.3",
     "standard-loader": "^6.0.1",
-    "style-loader": "^0.19.0",
+    "template-string-optimize-loader": "^2.2.3",
     "webpack": "^3.8.1"
   }
 }
