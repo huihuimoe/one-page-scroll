@@ -50,7 +50,8 @@ one-page-scroll has 4 options.
   el, // NodeList - the page elements, required
   time, // Number - the animation time(ms), default: 600
   easing, // String - CSS animation easing, default: ease-out
-  loop // Boolean - loop pages(only the last page to the first page), default: false
+  loop, // Boolean - loop pages(only the last page to the first page), default: false
+  throttling // number - the time you want to invoke user to scroll a page at most once
 }
 ```
 You can change the last 3 options any times. just `app.easing = 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'`

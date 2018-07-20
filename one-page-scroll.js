@@ -1,5 +1,23 @@
 /* global Blob URL CustomEvent location history */
 
+/**
+ * a simpleThrottling function
+ *
+ * @param {(...args) => any} callback
+ * @param {number} time
+ * @returns {(n: number) => onePageScroll}
+ */
+const simpleThrottling = (callback, time) => {
+  let calledTime = 0
+  return n => {
+    const now = Date.now()
+    if (calledTime + time < now) {
+      calledTime = now
+      callback(n)
+    }
+  }
+}
+
 class onePageScroll {
   /**
    * constructor
@@ -9,6 +27,7 @@ class onePageScroll {
    * @property {number} [time=600] - animation time
    * @property {string} [easing='ease-out'] - animation easing
    * @property {boolean} [loop=false] - goto first page after the last page
+   * @property {number} [throttling=600]
    * @param {onePageScrollOption}
    * @constructor
    */
@@ -16,7 +35,8 @@ class onePageScroll {
     el,
     time = 600,
     easing = 'ease-out',
-    loop = false
+    loop = false,
+    throttling
   } = {}) {
     if (!el || !el.length) {
       throw new Error('el is undefined')
@@ -25,12 +45,13 @@ class onePageScroll {
     /*
      * Variable Initialization
      */
-    this.loop = loop
     this.time = time
     this.easing = easing
+    this.loop = loop
     this.pageTotal = el.length
     /** @type {number} */
     this.active = 1
+    throttling = throttling || time
     const style = `
       body{
         overflow: hidden
@@ -65,6 +86,13 @@ class onePageScroll {
       }
     }) + 1
     this.goto(findHash())
+
+    /*
+     * define throttling function
+     * for Event handle using
+     */
+    const wrapGoto = n => this.goto(n)
+    this._goto = throttling ? simpleThrottling(wrapGoto, throttling) : wrapGoto
 
     /*
      * Event register
@@ -136,21 +164,21 @@ class onePageScroll {
         // PgUp, ↑
         case 33:
         case 38:
-          this.prev()
+          this._goto(this.active - 1)
           break
-        // PgDn, ↓, Space
+          // PgDn, ↓, Space
         case 32:
         case 34:
         case 40:
-          this.next()
+          this._goto(this.active + 1)
           break
-        // Home
+          // Home
         case 36:
-          this.goto(1)
+          this._goto(1)
           break
-        // End
+          // End
         case 35:
-          this.goto(this.pageTotal)
+          this._goto(this.pageTotal)
           break
       }
     }
@@ -159,9 +187,9 @@ class onePageScroll {
     const handleMouseWheel = e => {
       const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)))
       if (delta < 0) {
-        this.next()
+        this._goto(this.active + 1)
       } else {
-        this.prev()
+        this._goto(this.active - 1)
       }
     }
 
@@ -181,10 +209,10 @@ class onePageScroll {
         e.preventDefault()
         const deltaY = this._touchStartY - touches[0].pageY
         if (deltaY >= 50) {
-          this.next()
+          this._goto(this.active + 1)
         }
         if (deltaY <= -50) {
-          this.prev()
+          this._goto(this.active - 1)
         }
         if (Math.abs(deltaY) >= 50) {
           document.removeEventListener('touchmove', this)
