@@ -1,7 +1,7 @@
 # one-page-scroll
 [![tag](https://img.shields.io/github/tag/huihuimoe/one-page-scroll.svg?style=flat-square)](https://github.com/huihuimoe/one-page-scroll/releases)
 [![license](https://img.shields.io/github/license/huihuimoe/one-page-scroll.svg?style=flat-square)](https://github.com/huihuimoe/one-page-scroll/blob/master/LICENSE)
-[![size](https://img.shields.io/github/size/huihuimoe/one-page-scroll/one-page-scroll.min.js.svg?style=flat-square)](https://unpkg.com/one-page-scroll/one-page-scroll.min.js)
+[![size](https://img.shields.io/bundlephobia/minzip/one-page-scroll.svg)](https://unpkg.com/one-page-scroll/one-page-scroll.min.js)
 [![code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
 An easy javascipt library used to create the fullscreen scroll pages.

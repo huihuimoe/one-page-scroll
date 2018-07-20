@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const config = {
   context: __dirname,
   devtool: 'source-map',
+  mode: 'production',
   entry: {
     'one-page-scroll': './one-page-scroll.js'
   },
@@ -41,20 +42,14 @@ const config = {
       }
     ]},
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    }),
     new webpack.BannerPlugin({banner:
 `/*!
  * one-page-scroll ${require('./package.json').version}
  * https://github.com/huihuimoe/one-page-scroll
  * Released under the MIT license
  */`,
-      raw: true,
-      entryOnly: true}),
+    raw: true,
+    entryOnly: true}),
     new webpack.DefinePlugin({
       CSSCLASS: "'" + randomEmoji.random({count: 4}).join('') + "'"
     })
