@@ -2,9 +2,14 @@
 
 class onePageScroll {
   /**
-   * constructor function
+   * constructor
    *
-   * @param {Object} options - see README.md
+   * @typedef {Object} onePageScrollOption
+   * @property {NodeListOf<HTMLElement> | HTMLElement[]} el - input Element
+   * @property {number} [time=600] - animation time
+   * @property {string} [easing='ease-out'] - animation easing
+   * @property {boolean} [loop=false] - goto first page after the last page
+   * @param {onePageScrollOption}
    * @constructor
    */
   constructor ({
@@ -24,6 +29,7 @@ class onePageScroll {
     this.time = time
     this.easing = easing
     this.pageTotal = el.length
+    /** @type {number} */
     this.active = 1
     const style = `
       body{
@@ -42,6 +48,7 @@ class onePageScroll {
     link.setAttribute('rel', 'stylesheet')
     link.setAttribute('href', URL.createObjectURL(css))
     document.head.appendChild(link)
+    /** @type {HTMLElement[]} */
     this._el = Array.prototype.slice.call(el)
     this._el.forEach((el, index) => {
       el.classList.add('one-page-scroll--page')
@@ -68,7 +75,7 @@ class onePageScroll {
         this.goto(hashIndex, true)
       }
     });
-    ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].forEach(
+    ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].map(
       e => document.addEventListener(e, this)
     )
   }
@@ -76,7 +83,7 @@ class onePageScroll {
   /**
    * goto the nth page
    *
-   * @param {Number} n - the page number you want to go
+   * @param {number} n - the page number you want to go
    * @return {onePageScroll}
    */
   goto (n) {
@@ -115,11 +122,15 @@ class onePageScroll {
     return this.goto(this.active - 1)
   }
 
-  /*
+  /**
    * Event handler
+   *
+   * @param {Event} e
+   * @private
    */
 
   handleEvent (e) {
+    /** @type {(e: KeyboardEvent) => void} */
     const handleKeyDown = e => {
       switch (e.keyCode) {
         // PgUp, ↑
@@ -144,6 +155,7 @@ class onePageScroll {
       }
     }
 
+    /** @type {(e: WheelEvent) => void} */
     const handleMouseWheel = e => {
       const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)))
       if (delta < 0) {
@@ -153,6 +165,7 @@ class onePageScroll {
       }
     }
 
+    /** @type {(e: TouchEvent) => void} */
     const handleTouchStart = e => {
       const touches = e.touches
       if (touches && touches.length) {
@@ -161,6 +174,7 @@ class onePageScroll {
       }
     }
 
+    /** @type {(e: TouchEvent) => void} */
     const handleTouchMove = e => {
       const touches = e.touches
       if (touches && touches.length) {
@@ -196,3 +210,4 @@ class onePageScroll {
 }
 
 module.exports = onePageScroll
+module.exports.default = onePageScroll

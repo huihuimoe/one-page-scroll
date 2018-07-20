@@ -1,5 +1,3 @@
-'use strict'
-const randomEmoji = require('random-unicode-emoji')
 const webpack = require('webpack')
 const config = {
   context: __dirname,
