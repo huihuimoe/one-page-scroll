@@ -28,26 +28,34 @@ const config = {
       },
       {
         test: /\.js$/,
+        use: ['source-map-loader'],
+        enforce: 'pre'
+      },
+      {
+        test: /\.js$/,
         use: [
           'template-string-optimize-loader',
           {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
+              sourceMaps: true,
               presets: ['env']
             }
           }]
       }
     ]},
   plugins: [
-    new webpack.BannerPlugin({banner:
+    new webpack.BannerPlugin({
+      banner:
 `/*!
  * one-page-scroll ${require('./package.json').version}
  * https://github.com/huihuimoe/one-page-scroll
  * Released under the MIT license
  */`,
-    raw: true,
-    entryOnly: true})
+      raw: true,
+      entryOnly: true
+    })
   ]
 }
 

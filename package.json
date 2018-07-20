@@ -1,7 +1,7 @@
 {
   "name": "one-page-scroll",
-  "version": "0.2.0",
-  "description": "A One Page Scroll system.",
+  "version": "0.2.1",
+  "description": "A simple One Page Scroll plugin.",
   "main": "one-page-scroll.min.js",
   "scripts": {
     "test": "standard",
@@ -29,8 +29,5 @@
     "template-string-optimize-loader": "^2.2.3",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.10"
   }
 }
