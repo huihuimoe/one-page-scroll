@@ -1,4 +1,4 @@
-/* global CSSCLASS Blob URL CustomEvent location history */
+/* global Blob URL CustomEvent location history */
 
 class onePageScroll {
   /**
@@ -14,7 +14,7 @@ class onePageScroll {
     loop = false
   } = {}) {
     if (!el || !el.length) {
-      throw new TypeError('el is undefined')
+      throw new Error('el is undefined')
     }
 
     /*
@@ -29,7 +29,7 @@ class onePageScroll {
       body{
         overflow: hidden
       }
-      .${CSSCLASS}{
+      .one-page-scroll--page{
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -44,7 +44,7 @@ class onePageScroll {
     document.head.appendChild(link)
     this._el = Array.prototype.slice.call(el)
     this._el.forEach((el, index) => {
-      el.classList.add(CSSCLASS)
+      el.classList.add('one-page-scroll--page')
       el.style.transform = `translateY(${index * 100}%)`
     })
     this._hash = this._el.map((el, i) => el.getAttribute('name') || i + 1)

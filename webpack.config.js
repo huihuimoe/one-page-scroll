@@ -49,10 +49,7 @@ const config = {
  * Released under the MIT license
  */`,
     raw: true,
-    entryOnly: true}),
-    new webpack.DefinePlugin({
-      CSSCLASS: "'" + randomEmoji.random({count: 4}).join('') + "'"
-    })
+    entryOnly: true})
   ]
 }
 
