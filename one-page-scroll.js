@@ -70,7 +70,7 @@ class onePageScroll {
     link.setAttribute('href', URL.createObjectURL(css))
     document.head.appendChild(link)
     /** @type {HTMLElement[]} */
-    this._el = Array.prototype.slice.call(el)
+    this._el = [].slice.call(el)
     this._el.forEach((el, index) => {
       el.classList.add('one-page-scroll--page')
       el.style.transform = `translateY(${index * 100}%)`

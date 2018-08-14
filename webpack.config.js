@@ -39,8 +39,7 @@ const config = {
             loader: 'babel-loader',
             options: {
               cacheDirectory: true,
-              sourceMaps: true,
-              presets: ['env']
+              presets: ['@babel/env']
             }
           }]
       }
