@@ -7,7 +7,7 @@ namespace OnePageScroll {
     throttling?: number
   }
   class OnePageScroll {
-    constructor(OnePageScrollOption)
+    constructor(option: OnePageScrollOption)
     goto (n: number): OnePageScroll
     next (): OnePageScroll
     prev ():OnePageScroll
@@ -24,5 +24,5 @@ namespace OnePageScroll {
 }
 
 declare const onePageScroll: OnePageScroll.OnePageScroll
-export default onePageScroll
-export = onePageScroll
+export default OnePageScroll.OnePageScroll
+export = OnePageScroll.OnePageScroll
