@@ -18,6 +18,27 @@ const simpleThrottling = (callback, time) => {
   }
 }
 
+let init = () => {
+  const style = `
+    body{
+      overflow: hidden
+    }
+    .one-page-scroll--page{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none;
+      position: absolute
+    }
+  `
+  const css = new Blob([style], { type: 'text/css' })
+  const link = document.createElement('link')
+  link.setAttribute('rel', 'stylesheet')
+  link.setAttribute('href', URL.createObjectURL(css))
+  document.head.appendChild(link)
+  init = () => {}
+}
+
 class onePageScroll {
   /**
    * constructor
@@ -38,6 +59,7 @@ class onePageScroll {
     loop = false,
     throttling
   } = {}) {
+    init()
     if (!el || !el.length) {
       throw new Error('el is undefined')
     }
@@ -52,23 +74,6 @@ class onePageScroll {
     /** @type {number} */
     this.active = 1
     throttling = throttling || time
-    const style = `
-      body{
-        overflow: hidden
-      }
-      .one-page-scroll--page{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        touch-action: none;
-        position: absolute
-      }
-    `
-    const css = new Blob([style], {type: 'text/css'})
-    const link = document.createElement('link')
-    link.setAttribute('rel', 'stylesheet')
-    link.setAttribute('href', URL.createObjectURL(css))
-    document.head.appendChild(link)
     /** @type {HTMLElement[]} */
     this._el = [].slice.call(el)
     this._el.forEach((el, index) => {
@@ -103,8 +108,8 @@ class onePageScroll {
         this.goto(hashIndex, true)
       }
     });
-    ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].map(
-      e => document.addEventListener(e, this)
+    ['keydown', 'mousewheel', 'DOMMouseScroll', 'touchstart'].map(e =>
+      document.addEventListener(e, this)
     )
   }
 
@@ -116,7 +121,7 @@ class onePageScroll {
    */
   goto (n) {
     if (n > this.pageTotal || n < 1) {
-      this.loop ? n = 1 : n = this.active
+      this.loop ? (n = 1) : (n = this.active)
     }
     if (n !== this.active) {
       this._el.forEach((el, index) => {
@@ -166,17 +171,17 @@ class onePageScroll {
         case 38:
           this._goto(this.active - 1)
           break
-          // PgDn, ↓, Space
+        // PgDn, ↓, Space
         case 32:
         case 34:
         case 40:
           this._goto(this.active + 1)
           break
-          // Home
+        // Home
         case 36:
           this._goto(1)
           break
-          // End
+        // End
         case 35:
           this._goto(this.pageTotal)
           break
@@ -185,7 +190,7 @@ class onePageScroll {
 
     /** @type {(e: WheelEvent) => void} */
     const handleMouseWheel = e => {
-      const delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)))
+      const delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail))
       if (delta < 0) {
         this._goto(this.active + 1)
       } else {

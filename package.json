@@ -1,6 +1,6 @@
 {
   "name": "one-page-scroll",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A simple One Page Scroll plugin.",
   "main": "one-page-scroll.min.js",
   "scripts": {
