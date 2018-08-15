@@ -2,7 +2,7 @@
   "name": "one-page-scroll",
   "version": "0.2.3",
   "description": "A simple One Page Scroll plugin.",
-  "main": "one-page-scroll.min.js",
+  "main": "one-page-scroll.js",
   "typings": "./one-page-scroll.d.ts",
   "scripts": {
     "test": "standard",
@@ -24,12 +24,11 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-rc.1",
     "@babel/preset-env": "^7.0.0-rc.1",
-    "babel-loader": "^8.0.0-beta.4",
-    "source-map-loader": "^0.2.3",
-    "standard": "^11.0.1",
-    "standard-loader": "^6.0.1",
-    "template-string-optimize-loader": "^3.0.0",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0"
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^4.0.0-beta.8",
+    "rollup-plugin-standard": "^1.0.0",
+    "rollup-plugin-template-string-optimize": "^3.0.1",
+    "rollup-plugin-uglify": "^4.0.0",
+    "standard": "^11.0.1"
   }
 }
