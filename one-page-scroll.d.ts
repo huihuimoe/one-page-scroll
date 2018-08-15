@@ -1,18 +1,18 @@
-namespace OnePageScroll {
+declare namespace OnePageScroll {
   export interface OnePageScrollOption {
-    el: NodeListOf<HTMLElement> | ArrayLike<HTMLElement> | HTMLElement[],
-    time?: number,
-    easing?: string,
-    loop?: boolean,
+    el: NodeListOf<HTMLElement> | ArrayLike<HTMLElement> | HTMLElement[]
+    time?: number
+    easing?: string
+    loop?: boolean
     throttling?: number
   }
   class OnePageScroll {
     constructor(option: OnePageScrollOption)
-    goto (n: number): OnePageScroll
-    next (): OnePageScroll
-    prev ():OnePageScroll
-    private handleEvent (e: Event): void
-    private _goto (e: number): OnePageScroll
+    goto(n: number): OnePageScroll
+    next(): OnePageScroll
+    prev(): OnePageScroll
+    private handleEvent(e: Event): void
+    private _goto(e: number): OnePageScroll
     time: number
     easing: string
     loop: boolean
@@ -24,5 +24,4 @@ namespace OnePageScroll {
 }
 
 declare const onePageScroll: OnePageScroll.OnePageScroll
-export default OnePageScroll.OnePageScroll
 export = OnePageScroll.OnePageScroll
