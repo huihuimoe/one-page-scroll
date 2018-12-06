@@ -4,9 +4,9 @@
 * Released under the MIT license
 */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (factory());
+  (global.onePageScroll = factory());
 }(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
@@ -256,7 +256,6 @@
     return onePageScroll;
   }();
 
-  module.exports = onePageScroll;
-  module.exports.default = onePageScroll;
+  return onePageScroll;
 
 })));

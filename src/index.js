@@ -242,5 +242,4 @@ class onePageScroll {
   }
 }
 
-module.exports = onePageScroll
-module.exports.default = onePageScroll
+export default onePageScroll
