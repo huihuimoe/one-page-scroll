@@ -64,6 +64,15 @@ Add polyfill before one-page-scroll to support IE > 9.
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
 ```
 
+## Using Native ES Modules
+
+```
+<script type="module">
+  import OnePageScroll from '//unpkg.com/one-page-scroll/one-page-scroll.esm.js'
+  const app = new OnePageScroll(options)
+</script>
+```
+
 ## Build
 ```bash
 $ npm install

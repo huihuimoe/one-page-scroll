@@ -24,4 +24,4 @@ declare namespace OnePageScroll {
 }
 
 declare const onePageScroll: OnePageScroll.OnePageScroll
-export = OnePageScroll.OnePageScroll
+export = onePageScroll

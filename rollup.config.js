@@ -2,7 +2,7 @@ import pkg from './package.json'
 import standard from 'rollup-plugin-standard'
 import templateStringOptimize from 'rollup-plugin-template-string-optimize'
 import babel from 'rollup-plugin-babel'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from "rollup-plugin-terser"
 
 const banner = `/*!
 * one-page-scroll ${pkg.version}
@@ -40,11 +40,38 @@ export default [
     plugins: [
       standard(),
       templateStringOptimize(),
-      babel({
-        sourceMap: true,
-        presets: [['@babel/env', { modules: false }]]
-      }),
-      uglify({
+      terser({
+        output: {
+          comments: /^!/
+        }
+      })
+    ]
+  },
+  {
+    input: 'src/index.js',
+    output: {
+      file: 'one-page-scroll.esm.js',
+      format: 'esm',
+      banner
+    },
+    plugins: [
+      standard(),
+      templateStringOptimize()
+    ]
+  },
+  {
+    input: 'src/index.js',
+    output: {
+      file: 'one-page-scroll.esm.min.js',
+      sourcemap: true,
+      sourcemapFile: 'one-page-scroll.esm.min.js.map',
+      format: 'esm',
+      banner
+    },
+    plugins: [
+      standard(),
+      templateStringOptimize(),
+      terser({
         output: {
           comments: /^!/
         }

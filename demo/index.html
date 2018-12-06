@@ -66,6 +66,7 @@
       <input type="submit" value="change">
     </form>
   </nav>
+  <!-- ES2015 version
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.findIndex,Array.prototype.includes,Array.prototype.forEach,CustomEvent"></script>
   <script src="../one-page-scroll.min.js"></script>
   <script>
@@ -92,6 +93,31 @@
         e.preventDefault();
       })
     });
+  </script>
+  -->
+  <script type="module">
+    import onePageScroll from '../one-page-scroll.esm.js'
+    const el = document.querySelectorAll('section')
+    const app = new onePageScroll({
+      el: el
+    })
+    Array.from(el).forEach(function(el) {
+      ['inview','outview'].forEach(function(key) {
+        el.addEventListener(key, function() {
+          console.log((el.getAttribute('name') || 'null') + ' is ' + key)
+        })
+      })
+    })
+
+    window.app = app
+
+    document.addEventListener('submit', function(e) {
+      form = e.target
+      app.time = form.time.value
+      app.easing = form.easing.value
+      app.loop = form.loop.value === 'true'
+      e.preventDefault()
+    })
   </script>
 </body>
 

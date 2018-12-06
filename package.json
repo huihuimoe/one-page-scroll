@@ -28,7 +28,7 @@
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-standard": "^1.0.0",
     "rollup-plugin-template-string-optimize": "^3.0.1",
-    "rollup-plugin-uglify": "^6.0.0",
+    "rollup-plugin-terser": "^3.0.0",
     "standard": "^12.0.1"
   }
 }
