@@ -1,11 +1,11 @@
 {
   "name": "one-page-scroll",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A simple One Page Scroll plugin.",
   "main": "one-page-scroll.js",
   "typings": "./one-page-scroll.d.ts",
   "scripts": {
-    "test": "standard",
+    "test": "standard src/",
     "build": "rollup -c"
   },
   "repository": {

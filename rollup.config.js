@@ -58,24 +58,5 @@ export default [
       standard(),
       templateStringOptimize()
     ]
-  },
-  {
-    input: 'src/index.js',
-    output: {
-      file: 'one-page-scroll.esm.min.js',
-      sourcemap: true,
-      sourcemapFile: 'one-page-scroll.esm.min.js.map',
-      format: 'esm',
-      banner
-    },
-    plugins: [
-      standard(),
-      templateStringOptimize(),
-      terser({
-        output: {
-          comments: /^!/
-        }
-      })
-    ]
   }
 ]

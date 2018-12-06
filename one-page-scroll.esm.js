@@ -1,5 +1,5 @@
 /*!
-* one-page-scroll 0.2.4
+* one-page-scroll 0.2.5
 * https://github.com/huihuimoe/one-page-scroll
 * Released under the MIT license
 */
